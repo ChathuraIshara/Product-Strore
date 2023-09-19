@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Item from "./Item";
 
-function Products({ productlist, setProductlist, count }) {
+function Products({ productlist, setProductlist, count,setCount }) {
   useEffect(() => {
     fetch("http://127.0.0.1:8000/product")
       .then((response) => {
@@ -21,9 +21,10 @@ function Products({ productlist, setProductlist, count }) {
           <th>Title</th>
           <th>Quantity</th>
           <th>Price</th>
+          <th colspan="2">Actions</th>
         </tr>
         {productlist.map((item) => (
-          <Item item={item} key={item._id} />
+          <Item item={item} key={item._id} count={count} setCount={setCount}/>
         ))}
       </table>
     </div>

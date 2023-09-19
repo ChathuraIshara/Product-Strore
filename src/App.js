@@ -4,6 +4,9 @@ import Header from './components/Header';
 import { useState } from 'react';
 import Form from './components/Form';
 import Products from './components/products';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from './pages/Home';
+import EditPage from './components/Editpage';
 
 function App() {
 
@@ -17,9 +20,13 @@ function App() {
 
   return (
     <div className="App">
-      <Header/>
-      <Form title={title} setTitle={setTitle} quantity={quantity} setQuantity={setQuantity} price={price} setPrice={setPrice} count={count} setCount={setCount}/>
-      <Products productlist={productlist} setProductlist={setProductlist} count={count}/>
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home count={count} setCount={setCount} title={title} setTitle={setTitle} quantity={quantity} setQuantity={setQuantity} price={price} setPrice={setPrice} productlist={productlist} setProductlist={setProductlist}></Home>}></Route>
+        <Route path="/editpage/:id" element={<EditPage/>}></Route>
+      </Routes>
+      </BrowserRouter>
+     
     
     </div>
   );
